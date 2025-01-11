@@ -1,4 +1,4 @@
-﻿namespace Book.Domain.Apartment.Apartment
+﻿namespace Book.Domain.Apartment
 {
     public enum Amenity
     {

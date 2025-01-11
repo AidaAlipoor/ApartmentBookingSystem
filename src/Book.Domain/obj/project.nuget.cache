@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3YhMCABlqy6scSQO77dXw3d2k/8n3zwbo4Kl/lWmk9F09xOAXPAKDx2r2VvpR8xLFNaZ9lerGNUjY2UrTRHGxw==",
+  "dgSpecHash": "+klI5nyM8mMUdnmqKjWUhJTX0YYFYuZFVTe+gOm1FbT3bbK0PWLoSRNFH4rRgMtkzswEcy8lOp9L1DDvqL72+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\source\\repos\\ApartmentBookingSystem\\src\\Book.Domain\\Book.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
