@@ -1,4 +1,4 @@
-﻿namespace Book.Domain.Apartment
+﻿namespace Book.Domain.Shared
 {
     public record Money(decimal amount, Currency currency)
     {
@@ -9,5 +9,9 @@
 
             return new Money(first.amount + Second.amount, first.currency);
         }
+
+        public static Money Zero(Currency currency)  => new(0, currency);
+
+        public bool IsZero() => this == Zero(currency);
     }
 }

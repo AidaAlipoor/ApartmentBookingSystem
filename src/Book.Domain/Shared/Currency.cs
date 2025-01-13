@@ -1,4 +1,4 @@
-﻿namespace Book.Domain.Apartment
+﻿namespace Book.Domain.Shared
 {
     public record Currency
     {
