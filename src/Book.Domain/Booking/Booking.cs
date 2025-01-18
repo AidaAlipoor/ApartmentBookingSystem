@@ -1,9 +1,7 @@
 ﻿using Book.Domain.Abstraction;
-using Book.Domain.Apartment;
+using Book.Domain.Booking.Errors;
 using Book.Domain.Booking.Events;
 using Book.Domain.Shared;
-using System.Data;
-using System.Text.RegularExpressions;
 
 namespace Book.Domain.Booking
 {
@@ -65,6 +63,74 @@ namespace Book.Domain.Booking
             apartment.LastBookedOnUtc = utcNow;
 
             return booking;
+        }
+
+
+        public Result Confirm(DateTime utcNow)
+        {
+            if(Status != BookingStatus.Reserved)
+            {
+                return Result.Failure(BookingErrors.NotReserved);
+            }
+
+            Status = BookingStatus.Confirmed;  
+            ConfirmedOnUts = utcNow;
+
+            RaiseDomainEvent(new BookingConfirmedDomainEvent(Id));
+
+            return Result.Success();
+        }
+
+        public Result Reject(DateTime utcNow)
+        {
+            if (Status != BookingStatus.Reserved)
+            {
+                return Result.Failure(BookingErrors.NotReserved);
+            }
+
+            Status = BookingStatus.Rejected;
+            ConfirmedOnUts = utcNow;
+
+            RaiseDomainEvent(new BookingRejectedDomainEvent(Id));
+
+            return Result.Success();
+        }
+
+        public Result Compelete(DateTime utcNow)
+        {
+            if (Status != BookingStatus.Confirmed)
+            {
+                return Result.Failure(BookingErrors.NotConfirmed);
+            }
+
+            Status = BookingStatus.Completed;
+            ConfirmedOnUts = utcNow;
+
+            RaiseDomainEvent(new BookingCompeletedDomainEvent(Id));
+
+            return Result.Success();
+        }
+
+        public Result Cancel(DateTime utcNow)
+        {
+            if (Status != BookingStatus.Confirmed)
+            {
+                return Result.Failure(BookingErrors.NotConfirmed);
+            }
+
+            var currentDate = DateOnly.FromDateTime(utcNow);
+
+            if (currentDate > Duration.StartDate)
+            {
+                return Result.Failure(BookingErrors.AlreadyStarted);
+            }
+
+            Status = BookingStatus.Canceled;
+            ConfirmedOnUts = utcNow;
+
+            RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
+
+            return Result.Success();
         }
     }
 }
