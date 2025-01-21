@@ -17,8 +17,5 @@ namespace Book.Domain.Booking.Errors
         
         public static Error AlreadyStarted = new Error("Booking.AlreadyStarted"
             ,"The booking has already started");
-
-
-
     }
 }
