@@ -1,5 +1,4 @@
 ﻿using Book.Application.Abstraction.Email;
-using Book.Domain.Apartment.Repository;
 using Book.Domain.Booking.Events;
 using Book.Domain.Booking.Repository;
 using Book.Domain.Users.IUserRepository;
