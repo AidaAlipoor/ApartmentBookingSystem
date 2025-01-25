@@ -1,4 +1,5 @@
-﻿using Book.Domain.Booking;
+﻿using Book.Application.Abstraction.Behavior;
+using Book.Domain.Booking;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Book.Application
@@ -11,6 +12,7 @@ namespace Book.Application
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+                configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
 
             services.AddTransient<PricingService>();
