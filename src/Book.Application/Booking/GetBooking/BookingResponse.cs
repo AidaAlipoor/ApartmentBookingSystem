@@ -1,4 +1,4 @@
-﻿namespace Book.Application.GetBooking
+﻿namespace Book.Application.Booking.GetBooking
 {
     public sealed class BookingResponse
     {

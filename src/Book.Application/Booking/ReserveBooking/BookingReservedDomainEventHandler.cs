@@ -4,7 +4,7 @@ using Book.Domain.Booking.Repository;
 using Book.Domain.Users.IUserRepository;
 using MediatR;
 
-namespace Book.Application.Booking
+namespace Book.Application.Booking.ReserveBooking
 {
     internal sealed class BookingReservedDomainEventHandler : INotificationHandler<BookingRejectedDomainEvent>
     {
@@ -12,7 +12,7 @@ namespace Book.Application.Booking
         private readonly IBookingRepository _bookingRepository;
         private readonly IEmailService _emailService;
 
-        public BookingReservedDomainEventHandler(IUserRepository userRepository, 
+        public BookingReservedDomainEventHandler(IUserRepository userRepository,
             IBookingRepository bookingRepository, IEmailService emailService)
         {
             _userRepository = userRepository;
@@ -22,7 +22,7 @@ namespace Book.Application.Booking
 
         public async Task Handle(BookingRejectedDomainEvent notification, CancellationToken cancellationToken)
         {
-            var booking = await _bookingRepository.GetByIdAsync(notification.bookId,cancellationToken);
+            var booking = await _bookingRepository.GetByIdAsync(notification.bookId, cancellationToken);
 
             if (booking is null) { return; }
 

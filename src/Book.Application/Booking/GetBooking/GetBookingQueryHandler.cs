@@ -3,7 +3,7 @@ using Book.Application.Abstraction.Messaging;
 using Book.Domain.Abstraction;
 using Dapper;
 
-namespace Book.Application.GetBooking
+namespace Book.Application.Booking.GetBooking
 {
     internal sealed class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, BookingResponse>
     {
@@ -41,7 +41,7 @@ namespace Book.Application.GetBooking
 
             var booking = await connection.QueryFirstOrDefaultAsync<BookingResponse>(
                 sql,
-                new { request.bookingId}
+                new { request.bookingId }
                 );
 
             return booking;

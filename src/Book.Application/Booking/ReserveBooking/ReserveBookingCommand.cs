@@ -1,6 +1,6 @@
 ﻿using Book.Application.Abstraction.Messaging;
 
-namespace Book.Application.Booking
+namespace Book.Application.Booking.ReserveBooking
 {
     public record ReserveBookingCommand
         (
