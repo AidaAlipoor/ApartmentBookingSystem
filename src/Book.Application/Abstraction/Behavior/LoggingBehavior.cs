@@ -29,7 +29,7 @@ namespace Book.Application.Abstraction.Behavior
 
                 return result;
             }
-            catch (Exception exception)
+            catch (System.Exception exception)
             {
                 _logger.LogError(exception, "Command {Command} processing failed", name);
 

@@ -3,8 +3,6 @@ using Book.Application.Abstraction.Messaging;
 using Book.Domain.Abstraction;
 using Book.Domain.Booking;
 using Dapper;
-using System.ComponentModel;
-using System.Text.RegularExpressions;
 
 namespace Book.Application.Apartment
 {
