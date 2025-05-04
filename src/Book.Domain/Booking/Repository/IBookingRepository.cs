@@ -9,6 +9,6 @@
             DateRange duration,
             CancellationToken cancellationToken = default);
 
-        void Add(Booking booking);
+        void Insert(Booking booking);
     }
 }
