@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Book.Domain", "Book.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Application", "Book.Application\Book.Application.csproj", "{A9FB9CB4-0586-4BD7-B220-CEA25BC6AA80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Infrastructure", "Book.Infrastructure\Book.Infrastructure.csproj", "{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8013E2E4-BEDD-4F89-A0BE-A3FF4309C4C5} = {8013E2E4-BEDD-4F89-A0BE-A3FF4309C4C5}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +30,10 @@ Global
 		{A9FB9CB4-0586-4BD7-B220-CEA25BC6AA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9FB9CB4-0586-4BD7-B220-CEA25BC6AA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9FB9CB4-0586-4BD7-B220-CEA25BC6AA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +41,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8013E2E4-BEDD-4F89-A0BE-A3FF4309C4C5} = {53B292ED-ECC3-42AB-8F3B-2225CD384498}
 		{A9FB9CB4-0586-4BD7-B220-CEA25BC6AA80} = {53B292ED-ECC3-42AB-8F3B-2225CD384498}
+		{04DFDA2B-4F2D-47D6-B18F-319C5C6F9A9F} = {53B292ED-ECC3-42AB-8F3B-2225CD384498}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {075E027F-B220-49A7-9C4C-E583958DBA12}
