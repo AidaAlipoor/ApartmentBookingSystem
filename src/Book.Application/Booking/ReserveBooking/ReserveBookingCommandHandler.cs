@@ -1,4 +1,4 @@
-﻿using Book.Application.Abstraction.Messaging;
+﻿ using Book.Application.Abstraction.Messaging;
 using Book.Domain.Abstraction;
 using Book.Domain.Apartment.Errors;
 using Book.Domain.Apartment.Repository;
@@ -48,7 +48,7 @@ namespace Book.Application.Booking.ReserveBooking
             var booking = Domain.Booking.Booking
                 .Reserve(apartment, user.Id, duration, DateTime.Now, _pricingService);
 
-            _bookingRepository.Add(booking);
+            _bookingRepository.Insert(booking);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
