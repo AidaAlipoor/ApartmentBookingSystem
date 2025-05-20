@@ -14,11 +14,11 @@ namespace Book.Infrastructure.Configurations
 
             builder.Property(apartment => apartment.Name)
                 .HasMaxLength(200)
-                .HasConversion(name => name.name , value => new Name(value));
+                .HasConversion(name => name.name, value => new Name(value));
 
             builder.Property(apartment => apartment.Discription)
                 .HasMaxLength(2000)
-                .HasConversion(discription => discription.discription , value => new Discription(value));
+                .HasConversion(discription => discription.discription, value => new Discription(value));
 
             builder.OwnsOne(apartment => apartment.Price, priceBuilder =>
             {
@@ -33,6 +33,10 @@ namespace Book.Infrastructure.Configurations
             });
 
             builder.ToTable("Apartments");
+
+            builder.Property<byte[]>("Version")
+                .IsRowVersion()
+                .IsConcurrencyToken();
         }
     }
 }

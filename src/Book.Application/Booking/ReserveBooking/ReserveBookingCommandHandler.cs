@@ -1,4 +1,5 @@
-﻿ using Book.Application.Abstraction.Messaging;
+﻿using Book.Application.Abstraction.Messaging;
+using Book.Application.Exceptions;
 using Book.Domain.Abstraction;
 using Book.Domain.Apartment.Errors;
 using Book.Domain.Apartment.Repository;
@@ -45,14 +46,21 @@ namespace Book.Application.Booking.ReserveBooking
                 return Result.Failure<Guid>(BookingErrors.Overlap);
             }
 
-            var booking = Domain.Booking.Booking
-                .Reserve(apartment, user.Id, duration, DateTime.Now, _pricingService);
+            try
+            {
+                var booking = Domain.Booking.Booking
+                    .Reserve(apartment, user.Id, duration, DateTime.Now, _pricingService);
 
-            _bookingRepository.Insert(booking);
+                _bookingRepository.Insert(booking);
 
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return booking.Id;
+                return Result.Success<Guid>(booking.Id);
+            }
+            catch (ConcurrencyException)
+            {
+                return Result.Failure<Guid>(BookingErrors.Overlap);
+            }
         }
     }
 }
