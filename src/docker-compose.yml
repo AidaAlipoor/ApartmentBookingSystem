@@ -1,0 +1,25 @@
+services:
+  book.api:
+    image: ${DOCKER_REGISTRY-}bookapi
+    container_name: "Book.API"
+    build:
+      context: .
+      dockerfile: Book.API\Dockerfile
+    depends_on:
+      - book-db 
+
+  book-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: Book.Db
+    environment:
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=0123456789@Passw0rd
+        - MSSQL_PID=Express
+    ports:
+        - 1433:1433
+    volumes:
+        - ./.containers/sqlserver:/var/opt/mssql
+
+
+
+
