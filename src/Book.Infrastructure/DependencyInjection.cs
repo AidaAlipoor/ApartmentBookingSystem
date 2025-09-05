@@ -22,7 +22,7 @@ namespace Book.Infrastructure
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddTransient<IEmailService, EmailService>();
 
-            var connectionString = configuration.GetConnectionString("Database")
+            var connectionString = configuration.GetConnectionString("DefaultConnection")
                 ?? throw new ArgumentNullException(nameof(configuration));
             services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer());
 

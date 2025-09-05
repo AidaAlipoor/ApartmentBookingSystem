@@ -1,25 +1,19 @@
 services:
   book.api:
-    image: ${DOCKER_REGISTRY-}bookapi
-    container_name: "Book.API"
+    image: bookapi
     build:
       context: .
-      dockerfile: Book.API\Dockerfile
+      dockerfile: Book.API/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=book-db;Database=bookify;User Id=sa;Password=AidaAlipoor@1;TrustServerCertificate=True;
     depends_on:
-      - book-db 
+      - book-db
 
   book-db:
     image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: Book.Db
+    container_name: book-db
     environment:
-        - ACCEPT_EULA=Y
-        - SA_PASSWORD=0123456789@Passw0rd
-        - MSSQL_PID=Express
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=AidaAlipoor@1
     ports:
-        - 1433:1433
-    volumes:
-        - ./.containers/sqlserver:/var/opt/mssql
-
-
-
-
+      - "14330:1433"    
